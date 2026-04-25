@@ -1,0 +1,23 @@
+name: Jackpot_2_Run
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-sniper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Libs
+        run: pip install coincurve requests base58
+
+      - name: Start Jackpot 2.0
+        run: python Jackpot.py
+concurrency: 
